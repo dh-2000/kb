@@ -1,88 +1,56 @@
-// import Smartpark from './pages/SmartPark/index';
-// import Aqsc from './pages/SmartPark/aqsc/index';
-// import Jnhb from './pages/SmartPark/jnhb/index.jsx'
-// import Digitalaircraft from './pages/DigitalAircraft/index'
-// import Digitalworkshop from './pages/DigitalWorkshop/index';
-// import { useRoutes, Navigate } from 'react-router-dom';
+//路由组件封装
+import React, { Suspense } from 'react';
+import { Routes,Route,Navigate } from 'react-router-dom';
+import {RouteTable} from './RouteTable';
 
-// export default function BaseRoute(){
-//     const element = useRoutes([
-//         {
-//             path:'/smartpark',
-//             element:<Smartpark />,
-//             children:[
-//                 {
-//                     path:'aqsc',
-//                     element:<Aqsc/>
-//                 },
-//                 {
-//                     path:'jnhb',
-//                     element:<Jnhb/>
-//                 }
-//             ]
-//         },
-//         {
-//             path:'/digitalaircraft',
-//             element:<Digitalaircraft />
-//         },
-//         {
-//             path:"/digitalworkshop",
-//             element:<Digitalworkshop />
-//         },
-//         {
-//             path:"/",
-//             element:<Navigate to='/smartpark/aqsc' />
-//         }
-//     ]);
-//     return element;
-// }
-
-
-//懒加载路由表
-import React, { Suspense, lazy } from 'react';
-import { useRoutes } from 'react-router-dom';
-
-const RouteTable = [
-    {
-        path:'/smartpark',
-        component: lazy(()=> import('../pages/SmartPark/index')),
-        children:[
-            {
-                path:'aqsc',
-                component: lazy(()=> import('../pages/SmartPark/aqsc/index'))
-            },
-            {
-                path:'jnhb',
-                component: lazy(()=> import('../pages/SmartPark/jnhb/index'))
-            }
-        ]
-    },
-    {
-        path:'/digitalaircraft',
-        component: lazy(()=> import('../pages/DigitalAircraft/index'))
-    },
-    {
-        path:"/digitalworkshop",
-        component: lazy(()=> import('../pages/DigitalWorkshop/index'))
-    }
-];
+//loadding页面
+const Loadding = ()=>{
+    <>
+        <div>loadding...</div>
+    </>
+}
 
 const syncRouter = (table => {
-    console.log(table);
-    let mRouteTable = [];
-    table.forEach(route => {
-        mRouteTable.push({
-            path: route.path,
-            element:(
-                <Suspense fallback={ <div>路由加载中...</div> }>
-                    <route.component />
-                </Suspense>
-            ),
-            children: route.children && syncRouter(route.children)
+    if(table && table.length){
+        return table.map(({path,Component,children,redirect})=>{
+            return children && children.length ? (
+                <Route path={path} key={path} element={<Suspense fallback={<Loadding/>}><Component /></Suspense>}>
+                    {syncRouter(children)} //递归遍历子路由
+                    { redirect?
+                        (<Route path={path} element={<Navigate to={redirect} />}></Route>):
+                        (<Route path={path} element={<Navigate to={children[0].path} />}></Route>)
+                    }
+                </Route>
+            ):(
+                <Route key={path} path={path} element={<Suspense fallback={<Loadding/>}><Component /></Suspense>}></Route>
+            )
         })
-    });
-    return mRouteTable;
+    }
+    // console.log(table);
+    // let mRouteTable = [];
+    // table.forEach(route => {
+    //     mRouteTable.push({
+    //         path: route.path,
+    //         element:(
+    //             <Suspense fallback={ }>
+    //                 <route.component />
+    //             </Suspense>
+    //         ),
+    //         children: route.children && syncRouter(route.children)
+    //     })
+    // });
+    // return mRouteTable;
 })
 
 //直接暴露成一个组件调用
-export default () => useRoutes(syncRouter(RouteTable));
+// export default () => useRoutes(syncRouter(RouteTable));
+
+const RouteView = () => {
+    return (
+        <Routes>
+            {syncRouter(RouteTable)}
+        </Routes>
+    )
+}
+
+export default RouteView;

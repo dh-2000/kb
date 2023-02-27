@@ -1,0 +1,18 @@
+.smart-park {
+    background: gray;
+    .nav-list {
+        display:flex;
+        align-items: center;
+        div {
+            a {
+                display: inline-block;
+                color: #fff;
+                padding: 4px 8px;
+            }
+            a.active {
+                background: linear-gradient(to bottom,black,blue);
+            }
+        }
+        
+    }
+}

@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-
+import './index.scss'
 
 export default function index() {
   return (
-    <div>
+    <div className='smart-park'>
       <h1>智慧园区</h1>
       <div className='nav-list'>
         <div>
