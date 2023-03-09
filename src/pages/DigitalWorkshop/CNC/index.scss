@@ -1,3 +1,28 @@
-h1 {
-    color: red;
+// h1 {
+//     color: red;
+// }
+.cnc {
+	margin-top: 20px;
+	.cnc-main {
+        
+		display: flex;
+		// align-items: center;
+		.cnc-left {
+			width: 40%;
+			display: flex;
+			justify-content: space-between;
+			align-content: flex-start;
+			flex-wrap: wrap;
+		}
+		.cnc-center {
+			flex-grow: 1;
+		}
+		.cnc-right {
+			width: 40%;
+            display: flex;
+            justify-content: space-between;
+            align-content: flex-start;
+            flex-wrap: wrap;
+		}
+	}
 }

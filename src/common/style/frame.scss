@@ -1,2 +1,11 @@
 @import './normalize.css';
 @import './global.css';
+
+#root {
+    // background-image: url(../images/二期车间.jpg);
+    // background-size: 100%;
+    // background-repeat: no-repeat;
+    // padding-top: 60px;
+    // padding-bottom: 8px;
+    min-height: 100vh;
+}

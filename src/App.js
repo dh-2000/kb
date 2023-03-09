@@ -8,7 +8,6 @@ function App() {
     <Fragment>
       <BrowserRouter>
           <Heade />
-          <h1>this is a App</h1>
           <BaseRouter />
       </BrowserRouter>
     </Fragment>
