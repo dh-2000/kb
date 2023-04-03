@@ -1,0 +1,145 @@
+.cnc-jqdj {
+    width: 100%;
+    // height: 20vh;
+    flex-grow: 1;
+    background: rgba(58, 58, 58, 0.7);
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 10px;
+    .jqdj-main {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        margin-top: 10px;
+        //正常
+        .jqdj-jl {
+            width: 48%;
+            color: #fff;
+            font-size: 12px;
+            background-color: rgba(75, 75, 75, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 14px;
+            margin: 4px;
+            .jqdj-jl-top {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .jqdj-jl-name {
+                    color: rgb(91, 91, 248);
+                    font-weight: bold;
+                }
+            }
+            .jqdj-line {
+                display: inline-block;
+                width: 100%;
+                height: 1px;
+                background-color: gray;
+                margin: 4px;
+                position: relative;
+            }
+            .jqdj-line::before {
+                content: '';
+                display: inline-block;
+                width: 4px;
+                height: 4px;
+                background-color: blue;
+                border-radius: 50%;
+                position: absolute;
+                top:-100%;
+                border: 1px solid gray;
+            }
+            .jqdj-line::after {
+                content: '';
+                display: inline-block;
+                width: 4px;
+                height: 4px;
+                background-color: blue;
+                border-radius: 50%;
+                position: absolute;
+                top:-100%;
+                right:0;
+                border: 1px solid gray;
+            }
+            .jqdj-jl-bottom {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                div > span:nth-child(1) {
+                    padding-right: 4px;
+                    color: #999;
+                }
+            }
+        }
+        //故障
+        .jqdj-jl-gz {
+            width: 48%;
+            color: #fff;
+            font-size: 12px;
+            border: 1px solid rgba(255, 166, 0, 0.4);
+            background-color: rgba(75, 75, 75, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 14px;
+            margin: 4px;
+            .jqdj-jl-top {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .jqdj-jl-name-gz {
+                    color: rgb(233, 233, 80);
+                    font-weight: bold;
+                }
+            }
+            .jqdj-line-gz {
+                display: inline-block;
+                width: 100%;
+                height: 1px;
+                background-color: gray;
+                margin: 4px;
+                position: relative;
+            }
+            .jqdj-line-gz::before {
+                content: '';
+                display: inline-block;
+                width: 4px;
+                height: 4px;
+                background-color: yellow;
+                border-radius: 50%;
+                position: absolute;
+                top:-100%;
+                border: 1px solid gray;
+            }
+            .jqdj-line-gz::after {
+                content: '';
+                display: inline-block;
+                width: 4px;
+                height: 4px;
+                background-color: yellow;
+                border-radius: 50%;
+                position: absolute;
+                top:-100%;
+                right:0;
+                border: 1px solid gray;
+            }
+            .jqdj-jl-bottom {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                div > span:nth-child(1) {
+                    padding-right: 4px;
+                    color: #999;
+                }
+            }
+        }
+    }
+}

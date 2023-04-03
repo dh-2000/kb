@@ -1,0 +1,32 @@
+.title {
+    font-size: 14px;
+    margin-left: 15px;
+    background: linear-gradient(to right,#0086ff40,transparent);
+    transform: skew(-15deg);
+    position: relative;
+    span {
+        display: inline-block;
+        transform: skew(15deg);
+        padding-left: 10px;
+        color: #fff;
+        font-weight: 500;
+    }
+    span::before {
+        content: '';
+        width: 3px;
+        height: 100%;
+        position: absolute;
+        left:-6px;
+        transform: skew(-15deg);
+        background-color: #0086ff;
+    }
+    // span::after {
+    //     content: '';
+    //     width: 3px;
+    //     height: 100%;
+    //     position: absolute;
+    //     left:-6px;
+    //     transform: skew(-15deg);
+    //     background-color: #064e75;
+    // }
+}

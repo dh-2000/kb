@@ -1,0 +1,26 @@
+.digital-workshop {
+    background-image: url('../../common/images/th.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 60px;
+    padding-bottom: 8px;
+    min-height: 100vh;
+    .nav-list {
+        display:flex;
+        align-items: center;
+        div {
+            a {
+                font-size: 12px;
+                display: inline-block;
+                color: #fff;
+                padding: 4px 8px;
+                border-radius: 4px;
+            }
+            a.active {
+                background: linear-gradient(to bottom,#060f19,#004ca3);
+                border: 1px solid #166cce;
+            }
+        }
+        
+    }
+}
